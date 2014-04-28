@@ -14,7 +14,7 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/ryanj/restify-static.git"
+    "url": "https://github.com/ryanj/restify-base.git"
   },
   "scripts": {
     "start": "node server.js"
