@@ -1,8 +1,9 @@
-var config      = require('config'),
+var cc          = require('config-multipaas'),
     restify     = require('restify'),
     fs          = require('fs')
 
-var app         = restify.createServer()
+var config      = cc(),
+    app         = restify.createServer()
 
 app.use(restify.queryParser())
 app.use(restify.CORS())
@@ -24,6 +25,6 @@ app.get('/', function (req, res, next)
 
 app.get(/\/(css|js|img)\/?.*/, restify.serveStatic({directory: './static/'}));
 
-app.listen(config.port, config.ip, function () {
-  console.log( "Listening on " + config.ip + ", port " + config.port )
+app.listen(config.get('PORT'), config.get('IP'), function () {
+  console.log( "Listening on " + config.get('IP') + ", port " + config.get('PORT') )
 });

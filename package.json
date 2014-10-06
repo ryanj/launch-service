@@ -2,14 +2,14 @@
   "name": "Restify-Static",
   "description": "A simple Restify server with support for serving static files",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "engines": {
     "node": "0.10.x",
     "npm": "1.2.x"
   },
   "dependencies": {
-    "config": "0.4.x",
-    "restify": "2.5.x"
+    "config-multipaas": "0.0.1",
+    "restify": "^2.5.1"
   },
   "devDependencies": {},
   "repository": {
