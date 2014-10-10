@@ -1,5 +1,7 @@
-# A basic Restify quickstart 
+# A basic Restify project
 *With support for serving easy APIs and static content*
+
+[![Build Status](https://build-shifter.rhcloud.com:443/buildStatus/icon?job=restify-build)](https://build-shifter.rhcloud.com:443/job/restify-build/)
 
 To deploy a clone of this application using the [`rhc` command line tool](http://rubygems.org/gems/rhc):
 
