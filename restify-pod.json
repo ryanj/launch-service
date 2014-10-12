@@ -1,0 +1,40 @@
+{
+  "id": "restify-base",
+  "kind": "Pod",
+  "apiVersion": "v1beta1",
+  "desiredState": {
+    "manifest": {
+      "version": "v1beta1",
+      "id": "restify-base",
+      "containers": [{
+        "name": "restify-base",
+        "image": "ryanj/restify-base",
+        "env": [
+          {
+            "name": "OPENSHIFT_APP_DNS",
+            "value": "${OPENSHIFT_APP_DNS}"
+          },
+          {
+            "name": "OPENSHIFT_APP_NAME",
+            "value": "${OPENSHIFT_APP_NAME}"
+          },
+          {
+            "name": "OPENSHIFT_NODEJS_IP",
+            "value": "127.0.0.1"
+          },
+          {
+            "name": "OPENSHIFT_NODEJS_PORT",
+            "value": 8080
+          }
+        ],
+        "ports": [{
+          "hostPort": 8080,
+          "containerPort": 8080,
+        }]
+      }]
+    }
+  },
+  "labels": {
+    "name": "restify-base"
+  }
+}
