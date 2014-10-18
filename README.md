@@ -2,6 +2,7 @@
 *With support for serving easy APIs and static content*
 
 [![Build Status](https://build-shifter.rhcloud.com:443/buildStatus/icon?job=restify-build)](https://build-shifter.rhcloud.com:443/job/restify-build/)
+[![Dependency Check](https://david-dm.org/ryanj/restify-base.png)](https://david-dm.org/ryanj/restify-base)
 
 To deploy a clone of this application using the [`rhc` command line tool](http://rubygems.org/gems/rhc):
 
@@ -12,13 +13,13 @@ Or [link to a web-based clone+deploy](https://openshift.redhat.com/app/console/a
     https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=nodejs-0.10&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Frestify-base.git
 
 ## Local Development
-First, make sure the app's dependencies are available:
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-Then, start a local webserver with:
+Start a local server:
 
 ```bash
 npm start
@@ -29,14 +30,14 @@ To run [the related docker image](https://registry.hub.docker.com/u/ryanj/restif
 
 ```bash
 docker pull ryanj/restify-base
-docker run -d -p 8080:8080 -e "OPENSHIFT_APP_DNS=localhost" -e "OPENSHIFT_APP_NAME=app_name" ryanj/restify-base
+docker run -d -p 8080:8080 -e "HOSTNAME=localhost" -e "APP_NAME=app_name" ryanj/restify-base
 ```
 
 ## OpenShiftM5 and kubernetes
 A [sample kubernetes pod configuration file](https://github.com/ryanj/restify-base/blob/master/restify-pod.json) is included for running [this project's Docker build](https://registry.hub.docker.com/u/ryanj/restify-base/) on [an OriginM5 hosting environment](https://github.com/openshift/origin#getting-started):
 
 ```bash
-OPENSHIFT_APP_DNS=localhost OPENSHIFT_APP_NAME=app_name $GOPATH/src/github.com/openshift/origin/_output/go/bin/openshift kube create pods -c ~/src/restify-base/restify-base.json
+HOSTNAME=localhost APP_NAME=app_name $GOPATH/src/github.com/openshift/origin/_output/go/bin/openshift kube create pods -c ~/src/restify-base/restify-base.json
 ```
 
 ## License
