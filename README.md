@@ -1,8 +1,5 @@
-# A basic Restify project
+# A basic Restify project [![Build Status](http://img.shields.io/jenkins/s/https/build-shifter.rhcloud.com/restify-build.svg)](https://build-shifter.rhcloud.com/job/restify-build/) [![Dependency Check](http://img.shields.io/david/ryanj/restify-base.svg)](https://david-dm.org/ryanj/restify-base) [![Deploy](https://img.shields.io/badge/Launch_on-OpenShift-brightgreen.svg)](https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=nodejs-0.10&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Frestify-base.git&name=restify)
 *With support for serving easy APIs and static content*
-
-[![Build Status](https://build-shifter.rhcloud.com:443/buildStatus/icon?job=restify-build)](https://build-shifter.rhcloud.com:443/job/restify-build/)
-[![Dependency Check](https://david-dm.org/ryanj/restify-base.png)](https://david-dm.org/ryanj/restify-base)
 
 To deploy a clone of this application using the [`rhc` command line tool](http://rubygems.org/gems/rhc):
 

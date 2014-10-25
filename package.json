@@ -19,5 +19,6 @@
   "scripts": {
     "start": "node server.js"
   },
+  "license": "CC0",
   "main": "server.js"
 }
