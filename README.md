@@ -2,25 +2,27 @@
 
 Custom launch buttons, with opt-in usage tracking
 
-[![Launch on OpenShift](https://launch-shifter.rhcloud.com/button.svg)](https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=nodejs-0.10&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Flaunch-shifter.git)
+## SVG Application Launchers as a service
 
-## SVG buttons as a service
+[![Launch on OpenShift](https://launch-shifter.rhcloud.com/button.svg)](https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=nodejs-0.10&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Flaunch-service.git)
 
 "LAUNCH ON" is used as a default value for the upper text area.
 
 Include your own custom button text in the url for custom SVGs: /button/RUN%20ME%ON.svg
 
-[![Launch on OpenShift](https://launch-shifter.rhcloud.com/button/RUN%20ME%20ON)](https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=nodejs-0.10&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Flaunch-shifter.git)
+[![Launch on OpenShift](https://launch-shifter.rhcloud.com/button/RUN%20ME%20ON.svg)](https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=nodejs-0.10&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Flaunch-service.git)
+
+For notes on contructing application launch urls for your project, see my blog post on "[Customizing OpenShift’s Web-based App Creation Workflow](https://blog.openshift.com/customizing-openshifts-web-based-app-creation-workflow/)".
 
 ## Run your own launch service
 
 To deploy a clone of this application using the [`rhc` command line tool](http://rubygems.org/gems/rhc):
 
-    rhc app create launch nodejs-0.10 --from-code=https://github.com/ryanj/launch-shifter.git
+    rhc app create launch nodejs-0.10 --from-code=https://github.com/ryanj/launch-service.git
     
-Or [link to a web-based clone+deploy](https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=nodejs-0.10&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Flaunch-shifter.git) on [OpenShift Online](http://OpenShift.com) or on [your own OpenShift cloud](http://openshift.github.io): 
+Or [link to a web-based clone+deploy](https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=nodejs-0.10&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Flaunch-service.git) on [OpenShift Online](http://OpenShift.com) or on [your own OpenShift cloud](http://openshift.github.io): 
 
-    https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=nodejs-0.10&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Flaunch-shifter.git
+    https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=nodejs-0.10&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Flaunch-service.git
 
 ## Local Development
 Install dependencies:

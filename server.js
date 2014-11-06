@@ -2,7 +2,7 @@ var cc          = require('config-multipaas'),
     restify     = require('restify'),
     fs          = require('fs')
 
-var config      = cc(),
+var config      = cc().add({DEFAULT_BTN_TEXT: process.env.DEFAULT_BTN_TEXT || "LAUNCH ON"}),
     app         = restify.createServer()
 
 app.use(restify.queryParser())
@@ -17,24 +17,22 @@ app.get('/status', function (req, res, next)
 
 var getbutton = function (req, res, next)
 {
-  var text = req.params.text || req.params[0] || "LAUNCH ON";
+  var text = req.params.text || ''
+  if ( text.search(".svg") >= 0 ){
+    text = text.slice(0, text.search(".svg"))
+  }
+  if (text == ''){ 
+    text = config.get('DEFAULT_BTN_TEXT')
+  }
+  
   var data = fs.readFileSync(__dirname + '/static/img/launchbutton.svg');
-  //console.log('button: {text: "'+req.params[0]+'"}')
   console.log('button: {text: "'+text+'"}')
   res.status(200);
   res.header('Content-Type', 'image/svg+xml');
-  //res.end(data.toString().replace(/LAUNCH ON/, req.params[0]));
   res.end(data.toString().replace(/LAUNCH ON/, text));
 };
 
-//app.get(/buttons\/([a-zA-Z0-9_ %\.~-]*)\.svg/, function (req, res, next)
-//app.get('/button.svg', function (req, res, next)
-app.get('/button', getbutton)
 app.get('/button.svg', getbutton)
-//app.get('/button/:text.svg', getbutton)
-//app.get('/button/:text\.svg', getbutton)
-//app.get(/button\/([a-zA-Z0-9_ %\.~-]*)/, getbutton)
-app.get(/button\/([a-zA-Z0-9_ %\.~-]*)\.svg/, getbutton)
 app.get('/button/:text', getbutton)
 
 app.get('/', function (req, res, next)
