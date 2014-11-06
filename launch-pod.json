@@ -1,14 +1,14 @@
 {
-  "id": "restify-base",
+  "id": "launch-service",
   "kind": "Pod",
   "apiVersion": "v1beta1",
   "desiredState": {
     "manifest": {
       "version": "v1beta1",
-      "id": "restify-base",
+      "id": "launch-service",
       "containers": [{
-        "name": "restify-base",
-        "image": "ryanj/restify-base",
+        "name": "launch-service",
+        "image": "ryanj/launch-service",
         "env": [
           {
             "name": "OPENSHIFT_APP_DNS",
@@ -35,6 +35,6 @@
     }
   },
   "labels": {
-    "name": "restify-base"
+    "name": "launch-service"
   }
 }

@@ -1,6 +1,6 @@
 {
-  "name": "Restify-Static",
-  "description": "A simple Restify server with support for serving static files",
+  "name": "Launch-Service",
+  "description": "A launch button service for OpenShift",
   "version": "0.0.1",
   "private": false,
   "engines": {
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ryanj/restify-base.git"
+    "url": "https://github.com/ryanj/launch-service.git"
   },
   "scripts": {
     "start": "node server.js"
