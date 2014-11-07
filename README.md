@@ -1,4 +1,4 @@
-# Launch-Service [![Build Status](http://img.shields.io/travis/ryanj/launch-service)](https://travis-ci.org/ryanj/launch-service) [![Dependency Check](http://img.shields.io/david/ryanj/launch-service.svg)](https://david-dm.org/ryanj/launch-service) [![Deploy](https://img.shields.io/badge/Launch_on-OpenShift-brightgreen.svg)](https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=nodejs-0.10&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Flaunch-service.git&name=launch)
+# Launch-Service [![Dependency Check](http://img.shields.io/david/ryanj/launch-service.svg)](https://david-dm.org/ryanj/launch-service)
 
 Custom launch buttons, with opt-in usage tracking
 
