@@ -24,11 +24,21 @@ var cleanbuttontext = function (text)
   return text
 }
 
+var findtemplate = function (url)
+{
+  var template = "launchbutton"
+  if(url.search('launch/light')>=0){
+    template = "launchbutton_light"
+  }
+  return template
+}
+
 var svgtemplate = function (req, res, next)
 {
   var buttontext = cleanbuttontext(req.params.text)
-  var data = fs.readFileSync(__dirname + '/static/img/launchbutton.svg');
-  console.log('button: {text: "'+buttontext+'"}')
+  var svgtemplate = findtemplate(req.url)
+  var data = fs.readFileSync(__dirname + '/static/img/'+svgtemplate+'.svg');
+  console.log('button: {text: "'+buttontext+'", template: "'+svgtemplate+'"}')
   res.status(200);
   res.header('Content-Type', 'image/svg+xml');
   res.end(data.toString().replace(/LAUNCH ON/, buttontext));
