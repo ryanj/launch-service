@@ -1,6 +1,9 @@
 {
   "name": "Launch-Service",
   "description": "A launch button service for OpenShift",
+  "openshift": {
+    "launch_url": "https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=nodejs-0.10&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Flaunch-service.git&name=launch"
+  },
   "version": "0.0.1",
   "private": false,
   "engines": {
