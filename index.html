@@ -8,39 +8,47 @@
   <link href='css/bundle.css' rel='stylesheet' type='text/css' />
   <script src="js/bundle.js"></script>
 </head>
-<body>
+<body ng-controller="launchController">
 
 <section class='container'>
   <hgroup>
     <h1>Launch Service</h1>
   </hgroup>
 
-  <div ng-controller="launchController" class="row">
-  <div class='launchInputs col-xs-12 col-sm-6 col-md-6'>
+  <div class="row">
+  <div class='launchInputs col-sm-6'>
     <h2>Create a Launcher</h2>
     <form>
       <label>Launch URL:</label><br/>
-      <input ng-change='urlchange()' ng-model='launcher.url' type='text' value="{{defaults.url}}"/>
+      <input style='width:90%;' ng-change='urlchange()' ng-model='launcher.url' type='text' value="{{defaults.url}}"/>
       <br/>
       <br/>
       <label>Button text:</label><br/>
-      <input ng-change='textchange()' ng-model='launcher.text' type='text' value="{{defaults.text}}"/>
+      <input style='width:60%;' ng-change='textchange()' ng-model='launcher.text' type='text' value="{{defaults.text}}"/><span> <b>OPEN</b>SHIFT</span>
     </form>
-    <h2>Button Preview</h2>
-    <div class='launchPreview'>
-      <a href="{{launcher.url}}"><img alt="{{launcher.alt}}" ng-src="{{launcher.image}}"/></a>
-    </div>
   </div>
+  <div class='launchPreview col-md-6'>
+    <h2>Button Preview</h2>
+    <p>
+      <a href="{{launcher.url}}"><img alt="{{launcher.alt}}" ng-src="{{launcher.image}}"/></a>
+    </p>
+  </div>
+  </div>
+  <div class="row">
   <div class='launchOutputs col-xs-12 col-sm-6 col-md-6'>
     <h2>Embed Code</h2>
-    <div class='launchEmbed'>
-      <p>Markdown:</p>
-      <pre ng-bind="launcher.markdown">[![{{launcher.image}}]({{launcher.alt}})]({{launcher.url}})</pre>
-      <p>HTML:</p>
-      <pre ng-bind="launcher.html">&lt;a href="{{launcher.url}}"&gt;&lt;img alt="{{launcher.alt}}" src="{{launcher.image}}"/&gt;&lt;/a&gt;</pre>
-    </div>
+    <p><b>Markdown:</b></p>
+    <pre ng-bind="launcher.markdown">[![{{launcher.image}}]({{launcher.alt}})]({{launcher.url}})</pre>
+  </div>
+  <div class='launchOutputs col-xs-12 col-sm-6 col-md-6'>
+    <h2>&nbsp;</h2>
+    <p><b>HTML:</b></p>
+    <pre ng-bind="launcher.html">&lt;a href="{{launcher.url}}"&gt;&lt;img alt="{{launcher.alt}}" src="{{launcher.image}}"/&gt;&lt;/a&gt;</pre>
   </div>
   </div>
+  <span id="fossribbon">
+    <a href="https://github.com/ryanj/launch-service">Fork me on GitHub</a>
+  </span>
 </section>
 </body>
 </html>
