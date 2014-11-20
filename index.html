@@ -1,25 +1,46 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="launchApp">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Run it on OpenShift</title>
+  <title>Launch it on OpenShift</title>
 
-  <link href='/css/site.css' rel='stylesheet' type='text/css' />
+  <link href='css/bundle.css' rel='stylesheet' type='text/css' />
+  <script src="js/bundle.js"></script>
 </head>
 <body>
 
 <section class='container'>
-          <hgroup>
-            <h1>Launch Service for OpenShift</h1>
-          </hgroup>
+  <hgroup>
+    <h1>Launch Service</h1>
+  </hgroup>
 
-  <a href="/r/123"><img src="/launch.svg"/></a>
-  <a href="/r/321"><img src="/launch/RUN%20ME%20ON"/></a>
-  <a href="/r/777"><img src="/launch/DEPLOY%20TO.svg"/></a>
-  <a href="/r/888"><img src="/launch/POWERED%20BY"/></a>
-  <a href="/r/999"><img src="/launch/light/this%20app%20runs%20on"/></a>
-
+  <div ng-controller="launchController" class="row">
+  <div class='launchInputs col-xs-12 col-sm-6 col-md-6'>
+    <h2>Create a Launcher</h2>
+    <form>
+      <label>Launch URL:</label><br/>
+      <input ng-change='urlchange()' ng-model='launcher.url' type='text' value="{{defaults.url}}"/>
+      <br/>
+      <br/>
+      <label>Button text:</label><br/>
+      <input ng-change='textchange()' ng-model='launcher.text' type='text' value="{{defaults.text}}"/>
+    </form>
+    <h2>Button Preview</h2>
+    <div class='launchPreview'>
+      <a href="{{launcher.url}}"><img alt="{{launcher.alt}}" ng-src="{{launcher.image}}"/></a>
+    </div>
+  </div>
+  <div class='launchOutputs col-xs-12 col-sm-6 col-md-6'>
+    <h2>Embed Code</h2>
+    <div class='launchEmbed'>
+      <p>Markdown:</p>
+      <pre ng-bind="launcher.markdown">[![{{launcher.image}}]({{launcher.alt}})]({{launcher.url}})</pre>
+      <p>HTML:</p>
+      <pre ng-bind="launcher.html">&lt;a href="{{launcher.url}}"&gt;&lt;img alt="{{launcher.alt}}" src="{{launcher.image}}"/&gt;&lt;/a&gt;</pre>
+    </div>
+  </div>
+  </div>
 </section>
 </body>
 </html>

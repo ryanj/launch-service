@@ -1,0 +1,5 @@
+#!/bin/bash
+
+pushd $OPENSHIFT_REPO_DIR
+npm run build
+popd
