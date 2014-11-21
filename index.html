@@ -29,26 +29,30 @@
   </div>
   <div class='launchPreview col-md-6'>
     <h2>Button Preview</h2>
-    <p>
+    <p>Try launching your app or service:</p>
+    <div>
       <a href="{{launcher.url}}"><img alt="{{launcher.alt}}" ng-src="{{launcher.image}}"/></a>
-    </p>
+    </div>
   </div>
   </div>
   <div class="row">
   <div class='launchOutputs col-xs-12 col-sm-6 col-md-6'>
     <h2>Embed Code</h2>
-    <p><b>Markdown:</b></p>
+    <h3>Markdown:</h3>
     <pre ng-bind="launcher.markdown">[![{{launcher.image}}]({{launcher.alt}})]({{launcher.url}})</pre>
   </div>
   <div class='launchOutputs col-xs-12 col-sm-6 col-md-6'>
     <h2>&nbsp;</h2>
-    <p><b>HTML:</b></p>
+    <h3>HTML:</h3>
     <pre ng-bind="launcher.html">&lt;a href="{{launcher.url}}"&gt;&lt;img alt="{{launcher.alt}}" src="{{launcher.image}}"/&gt;&lt;/a&gt;</pre>
   </div>
   </div>
-  <span id="fossribbon">
-    <a href="https://github.com/ryanj/launch-service">Fork me on GitHub</a>
-  </span>
+  <footer>
+    <div class="logo"><a href="https://www.openshift.com/"></a></div>
+  </footer>
 </section>
+<span id="fossribbon">
+  <a href="https://github.com/ryanj/launch-service">Fork me on GitHub</a>
+</span>
 </body>
 </html>
