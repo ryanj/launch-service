@@ -19,12 +19,16 @@
   <div class='launchInputs col-xs-12 col-sm-6 col-md-6'>
     <h2>Create a Launcher</h2>
     <form>
-      <label>Launch URL:</label><br/>
-      <input style='width:90%;' ng-change='onUrlChange()' ng-model='launcher.url' type='text' value="{{defaults.url}}"/>
-      <br/>
-      <br/>
-      <label>Button text:</label><br/>
-      <input style='width:60%;' ng-change='onTextChange()' ng-model='launcher.text' type='text' value="{{defaults.text}}" /><span> <b>OPEN</b>SHIFT</span>
+      <label for='launchurlinput'>Launch URL:</label><br/>
+      <input id='launchurlinput' style='width:90%;' ng-change='onUrlChange()' ng-model='launcher.url' type='text' value="{{defaults.url}}"/>
+      <br/><br/>
+      <label for='buttontextinput'>Button text:</label><br/>
+      <input id='buttontextinput' style='width:60%;' ng-change='onTextChange()' ng-model='launcher.text' type='text' value="{{defaults.text}}" /><span> <b>OPEN</b>SHIFT</span>
+      <div class='metrics_controls' style="display:{{launcher.metrics_controls}};">
+        <br/><br/>
+        <input ng-change='onUrlChange()' ng-model='launcher.metrics' id='metricscheckboxinput' type='checkbox' ng-bind="launcher.metrics" />
+        <label for='metricscheckboxinput'>Enable metrics collection</label>
+      </div>
     </form>
   </div>
   <div class='launchPreview col-xs-12 col-sm-6 col-md-6'>
