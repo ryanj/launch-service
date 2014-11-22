@@ -16,7 +16,9 @@ angular.module('launchApp', [])
     'initial_git_url'   : "https%3A%2F%2Fgithub.com%2Fryanj%2Flaunch-service.git"
   };
   $scope.initDefaults = function(){
+    var carts = [];
     var qs_whitelist = ['text','name','initial_git_url','initial_git_branch','launch_host','launch_path','cartridges','metrics'];
+    // Use available querystring values to set internal defaults
     var qs = window.location.search.slice(1).split("&");
     qs.forEach(function(param){
       var p = param.split("=");
@@ -24,8 +26,17 @@ angular.module('launchApp', [])
         $scope.defaults[p[0]] = p[1];
         $scope.launcher[p[0]] = p[1];
         qs_whitelist.splice(qs_whitelist.indexOf(p[0]),1);
+      }else if( p[0] == 'cartridges[]'){
+        //Allow multiple "cartridges[]" params
+        // OR one "cartridges" param containing CSV
+        carts.push(p[1]);
       }
     });
+    if(carts.length > 0){
+      // coerce multiple "cartridges[]" to CSV internally
+      $scope.defaults.cartridges = carts.join(',');
+    }
+    // Set the remaining launcher internals to their default values:
     qs_whitelist.push('host');
     qs_whitelist.forEach(function(param){
       $scope.launcher[param] = $scope.defaults[param];
