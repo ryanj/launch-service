@@ -8,14 +8,15 @@ angular.module('launchApp', [])
     'text' : "LAUNCH ON",
     'image': "button.svg",
     'name' : "launch",
-    'metrics'        : false,
-    'launch_host'    : "https://openshift.redhat.com",
-    'launch_path'    : "/app/console/application_type/custom",
-    'cartridges'     : "nodejs-0.10",
-    'initial_git_url': "https%3A%2F%2Fgithub.com%2Fryanj%2Flaunch-service.git"
+    'metrics'    : false,
+    'launch_host': "https://openshift.redhat.com",
+    'launch_path': "/app/console/application_type/custom",
+    'cartridges' : "nodejs-0.10",
+    'initial_git_branch': "master",
+    'initial_git_url'   : "https%3A%2F%2Fgithub.com%2Fryanj%2Flaunch-service.git"
   };
   $scope.initDefaults = function(){
-    var qs_whitelist = ['text','name','initial_git_url','launch_host','launch_path','cartridges','metrics'];
+    var qs_whitelist = ['text','name','initial_git_url','initial_git_branch','launch_host','launch_path','cartridges','metrics'];
     var qs = window.location.search.slice(1).split("&");
     qs.forEach(function(param){
       var p = param.split("=");
@@ -36,15 +37,20 @@ angular.module('launchApp', [])
     $scope.onUrlChange()
     $scope.onTextChange()
   };
-  $scope.createLaunchUrl = function(launch_host, launch_path, cartridges, initial_git_url, name, metrics){
+  $scope.createLaunchUrl = function(launch_host, launch_path, cartridges, initial_git_url, initial_git_branch, name, metrics){
+    var url = '';
     carts = '?';
     cart_params = cartridges.split(',');
     cart_params.forEach(function(cart){
       carts += 'cartridges[]='+cart+'&';
     });
     //if(metrics){
-    return launch_host+launch_path+carts+"initial_git_url="+initial_git_url+"&name="+name;
+    url = launch_host+launch_path+carts+"initial_git_url="+initial_git_url+"&name="+name;
     //}else ...
+    if(initial_git_branch !== "master"){
+      url+="&initial_git_branch="+initial_git_branch
+    }
+    return url 
   }
   $scope.getLaunchUrl = function(){
     return $scope.createLaunchUrl(
@@ -52,6 +58,7 @@ angular.module('launchApp', [])
       $scope.launcher.launch_path || $scope.defaults.launch_path,
       $scope.launcher.cartridges || $scope.defaults.cartridges,
       $scope.launcher.initial_git_url || $scope.defaults.initial_git_url,
+      $scope.launcher.initial_git_branch || $scope.defaults.initial_git_branch,
       $scope.launcher.name || $scope.defaults.name,
       $scope.launcher.metrics
     );
