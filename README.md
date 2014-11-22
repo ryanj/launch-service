@@ -1,16 +1,10 @@
 # Launch-Service [![Build Status](https://api.travis-ci.org/ryanj/launch-service.svg)](https://travis-ci.org/ryanj/launch-service) [![Dependency Check](http://img.shields.io/david/ryanj/launch-service.svg)](https://david-dm.org/ryanj/launch-service)
 
-Custom launch buttons, with opt-in usage tracking
+Custom launch buttons, with opt-in usage tracking:
 
-Try it here: [launch-shifter.rhcloud.com](https://launch-shifter.rhcloud.com)
+[![Launch it on OpenShift](https://launch-shifter.rhcloud.com/button/LAUNCH%20ON.svg)](https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=nodejs-0.10&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Flaunch-service.git)
 
-## SVG Application Launchers as a service
-
-Create Launch buttons like this:
-
-[![Launch on OpenShift](https://launch-shifter.rhcloud.com/button.svg)](https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=nodejs-0.10&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Flaunch-service.git)
-
-For notes on contructing application launch urls for your project, see my blog post on "[Customizing OpenShift’s Web-based App Creation Workflow](https://blog.openshift.com/customizing-openshifts-web-based-app-creation-workflow/)".
+Create your own launchers here: [launch-shifter.rhcloud.com](https://launch-shifter.rhcloud.com)
 
 ## Run your own launch service
 
