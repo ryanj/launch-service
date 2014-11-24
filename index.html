@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="launchApp">
+<html lang="en" data-ng-app="launchApp">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -8,25 +8,29 @@
   <link href='css/bundle.css' rel='stylesheet' type='text/css' />
   <script src="js/bundle.js"></script>
 </head>
-<body ng-controller="launchController">
+<body data-ng-controller="launchController">
 
 <section class='container'>
-  <hgroup>
+  <hgroup><header>
     <h1>Launch Service</h1>
-  </hgroup>
+  </header></hgroup>
 
   <div class="row">
   <div class='launchInputs col-xs-12 col-sm-6 col-md-6'>
     <h2>Create a Launcher</h2>
-    <form>
-      <label for='launchurlinput'>Launch URL:</label><br/>
-      <input id='launchurlinput' style='width:90%;' ng-change='onUrlChange()' ng-model='launcher.url' type='text' value="{{defaults.url}}"/>
-      <br/><br/>
-      <label for='buttontextinput'>Button text:</label><br/>
-      <input id='buttontextinput' style='width:60%;' ng-change='onTextChange()' ng-model='launcher.text' type='text' value="{{defaults.text}}" /><span> <b>OPEN</b>SHIFT</span>
-      <div class='metrics_controls' style="display:{{launcher.metrics_controls}};">
-        <br/><br/>
-        <input ng-change='onUrlChange()' ng-model='launcher.metrics' id='metricscheckboxinput' type='checkbox' ng-bind="launcher.metrics" />
+    <form name='launchForm' class='form-horizontal' novalidate>
+      <div class="form-group">
+        <label class='control-label' for='launchurlinput'>Launch URL:</label><br/>
+        <input name='url' id='launchurlinput' style='width:90%;' data-ng-change='onUrlChange()' data-ng-model='launcher.url' type='text' placeholder={{defaults.url}} value="{{defaults.url}}" />
+      </div>
+      <br/>
+      <div class="form-group">
+        <label for='buttontextinput'>Button text:</label><br/>
+        <input name='text' id='buttontextinput' style='width:60%;' data-ng-change='onTextChange()' data-ng-model='launcher.text' type='text' value="{{defaults.text}}" placeholder={{defaults.text}} required /><span> <b>OPEN</b>SHIFT</span>
+      </div>
+      <div class='form-group metrics_controls' data-ng-show="launcher.metrics_controls">
+        <br/>
+        <input data-ng-change='onUrlChange()' data-ng-model='launcher.metrics' id='metricscheckboxinput' type='checkbox' required />
         <label for='metricscheckboxinput'>Enable metrics collection</label>
       </div>
     </form>
@@ -34,20 +38,23 @@
   <div class='launchPreview col-xs-12 col-sm-6 col-md-6'>
     <h2>Button Preview</h2>
     <p>Try launching your app or service:</p>
-    <div class='preview'><a href="{{launcher.url}}"><img alt="{{launcher.alt}}" ng-src="{{launcher.image}}"/></a></div>
+    <p class='preview'>
+      <a ng-click="launcher.counter = launcher.counter + 1" href="{{getUrl()}}"><img alt="{{getAltText()}}" data-ng-src="{{getImage()}}"/></a>
+    </p>
+    <div data-ng-show="launcher.metrics">Launch Counter: {{launcher.counter}}</div>
   </div>
   </div>
   <div class="row">
-  <div class='launchOutputs col-xs-12 col-sm-6 col-md-6'>
-    <h2>Embed Code</h2>
-    <h3>Markdown:</h3>
-    <pre ng-bind="launcher.markdown">[![{{launcher.image}}]({{launcher.alt}})]({{launcher.url}})</pre>
-  </div>
-  <div class='launchOutputs col-xs-12 col-sm-6 col-md-6'>
-    <h2>&nbsp;</h2>
-    <h3>HTML:</h3>
-    <pre ng-bind="launcher.html">&lt;a href="{{launcher.url}}"&gt;&lt;img alt="{{launcher.alt}}" src="{{launcher.image}}"/&gt;&lt;/a&gt;</pre>
-  </div>
+    <div class='launchOutputs col-xs-12 col-sm-6 col-md-6'>
+      <h2>Embed Code</h2>
+      <h3>Markdown:</h3>
+      <pre data-ng-bind="getMarkdown()"></pre>
+    </div>
+    <div class='launchOutputs col-xs-12 col-sm-6 col-md-6'>
+      <h2>&nbsp;</h2>
+      <h3>HTML:</h3>
+      <pre data-ng-bind="getHtml()"></pre>
+    </div>
   </div>
   <footer>
     <div class="logo"><a href="https://www.openshift.com/"></a></div>
