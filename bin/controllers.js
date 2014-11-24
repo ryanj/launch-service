@@ -13,7 +13,7 @@ exports.launchController = function($scope) {
     'launch_path': "/app/console/application_type/custom",
     'cartridges' : "nodejs-0.10",
     'initial_git_branch': "master",
-    'initial_git_url'   : "https%3A%2F%2Fgithub.com%2Fryanj%2Flaunch-service.git"
+    'initial_git_url'   : "https://github.com/ryanj/launch-service.git"
   };
   $scope.init = function(){
     var carts = [];
@@ -45,18 +45,19 @@ exports.launchController = function($scope) {
     $scope.launcher.metrics = ( $scope.launcher.metrics == "true") ? true : false;
     $scope.launcher.metrics_controls = ( $scope.defaults.metrics == "true") ? true : false;
   };
-  $scope.createLaunchUrl = function(launch_host, launch_path, cartridges, initial_git_url, initial_git_branch, name, metrics){
+  $scope.createLaunchUrl = function(launch_host, launch_path, cartridges, initial_git_url, initial_git_branch, name, metrics, metrics_url){
     var url = '';
     var carts = '?';
-    var cart_params = cartridges.split(',');
+    var cart_params = cartridges.replace(/ */g,'').split(',');
     cart_params.forEach(function(cart){
       carts += 'cartridges[]='+cart+'&';
     });
-    //if(metrics){
     url = launch_host+launch_path+carts+"initial_git_url="+initial_git_url+"&name="+name;
-    //}else ...
     if(initial_git_branch !== "master"){
       url+="&initial_git_branch="+initial_git_branch
+    }
+    if(metrics){
+      return metrics_url+'r?url='+encodeURIComponent(url);
     }
     return url;
   };
@@ -68,7 +69,8 @@ exports.launchController = function($scope) {
       $scope.launcher.initial_git_url || $scope.defaults.initial_git_url,
       $scope.launcher.initial_git_branch || $scope.defaults.initial_git_branch,
       $scope.launcher.name || $scope.defaults.name,
-      $scope.launcher.metrics
+      $scope.launcher.metrics,
+      $scope.defaults.host
     );
   };
   $scope.getText = function() {

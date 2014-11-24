@@ -78,17 +78,28 @@ app.get('/launch.svg', svgtemplate)
 app.get('/launch/:text', svgtemplate)
 app.get('/counter/:id', svgtemplate)
 
-//Counter
-app.get('/r/:id', function (req, res, next)
+// a Basic Counter
+app.get('/r', function (req, res, next)
 {
-  var id = req.params.id || '123'
-  var url = req.query.url || config.get('DEFAULT_LAUNCH_URL')
+  var url = decodeURI(req.query.url);
   //emit event w/ timestamp
   //write to log / db in event handler
-  console.log("launch: { id: \""+id+"\", url: \""+url+"\" }");
+  console.log("launch: { url: \""+url+"\" }");
   res.header('Location', url);
   res.send(302);
-})
+});
+
+//fetch object contents via gist id?
+//app.get('/r/:id/', function (req, res, next)
+//{
+//  var id = req.params.id || '123'
+//  var url = req.query.url || config.get('DEFAULT_LAUNCH_URL')
+//  //emit event w/ timestamp
+//  //write to log / db in event handler
+//  console.log("launch: { id: \""+id+"\", url: \""+url+"\" }");
+//  res.header('Location', url);
+//  res.send(302);
+//})
 
 // Input form:
 app.get('/', function (req, res, next)

@@ -21,22 +21,22 @@
     <form name='launchForm' class='form-horizontal' novalidate>
       <div class="form-group">
         <label class='control-label' for='name'>Service Name:</label><br/>
-        <input name='name' id='name' style='width:90%;' data-ng-model='launcher.name' type='text' placeholder={{defaults.name}} />
+        <input class="form-control" name='name' id='name' style='width:90%;' data-ng-model='launcher.name' type='text' placeholder={{defaults.name}} />
       </div>
       <br />
       <div class="form-group">
         <label class='control-label' for='initial_git_url'>Source:</label><br/>
-        <input name='initial_git_url' id='initial_git_url' style='width:90%;' data-ng-model='launcher.initial_git_url' type='text' placeholder={{defaults.initial_git_url}} />
+        <input class="form-control" name='initial_git_url' id='initial_git_url' style='width:90%;' data-ng-model='launcher.initial_git_url' type='text' placeholder={{defaults.initial_git_url}} />
       </div>
       <br />
       <div class="form-group">
         <label class='control-label' for='cartridges'>Cartridge Runtimes:</label><br/>
-        <input name='cartridges' id='cartridges' style='width:90%;' data-ng-model='launcher.cartridges' type='text' placeholder={{defaults.cartridges}} />
+        <input class="form-control" name='cartridges' id='cartridges' style='width:90%;' data-ng-model='launcher.cartridges' type='text' placeholder={{defaults.cartridges}} />
       </div>
-      <br />
-      <div class="form-group">
+      <div style='display:none;' class="form-group">
+        <br />
         <label class='control-label' for='launchurlinput'>Launch URL:</label><br/>
-        <input name='launchurlinput' id='launchurlinput' style='width:90%;' readonly='true' data-ng-bind='getLaunchUrl()' type='text' placeholder={{getLaunchUrl()}} />
+        <div class="form-control" style='width:90%;border:1px solid #CCC;background:white;overflow:hidden;' data-ng-bind="getLaunchUrl()" type='text' ></div>
       </div>
       <div data-ng-show="launcher.metrics"><br/>Launch Count: {{launcher.counter}}</div>
     </form>
@@ -51,7 +51,7 @@
       <div class='form-group metrics_controls' data-ng-show="launcher.metrics_controls">
         <br/>
         <input data-ng-model='launcher.metrics' id='metricscheckboxinput' type='checkbox' required />
-        <label for='metricscheckboxinput'>Enable Metrics</label>
+        <label for='metricscheckboxinput'>Enable metrics collection</label>
       </div>
     </form>
 
