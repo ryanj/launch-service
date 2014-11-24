@@ -44,8 +44,6 @@ exports.launchController = function($scope) {
     });
     $scope.launcher.metrics = ( $scope.launcher.metrics == "true") ? true : false;
     $scope.launcher.metrics_controls = ( $scope.defaults.metrics == "true") ? true : false;
-    $scope.defaults.url=$scope.getLaunchUrl();
-    $scope.launcher.url=$scope.defaults.url;
   };
   $scope.createLaunchUrl = function(launch_host, launch_path, cartridges, initial_git_url, initial_git_branch, name, metrics){
     var url = '';
@@ -60,10 +58,7 @@ exports.launchController = function($scope) {
     if(initial_git_branch !== "master"){
       url+="&initial_git_branch="+initial_git_branch
     }
-    return url 
-  }
-  $scope.getUrl = function(){
-    return $scope.launcher.url || $scope.defaults.url;
+    return url;
   };
   $scope.getLaunchUrl = function(){
     return $scope.createLaunchUrl(
@@ -86,10 +81,10 @@ exports.launchController = function($scope) {
     return $scope.defaults.host + 'button/'+ $scope.getText() +'.svg'
   }
   $scope.getMarkdown = function(){
-    return "[!["+$scope.getAltText()+"]("+$scope.getImage()+")]("+$scope.getUrl()+")";
+    return "[!["+$scope.getAltText()+"]("+$scope.getImage()+")]("+$scope.getLaunchUrl()+")";
   };
   $scope.getHtml = function(){
-    return "<a href=\"" + $scope.getUrl() + "\"><img alt=\"" + $scope.getAltText() + "\" src=\"" + $scope.getImage() + "\" /></a>";
+    return "<a href=\"" + $scope.getLaunchUrl() + "\"><img alt=\"" + $scope.getAltText() + "\" src=\"" + $scope.getImage() + "\" /></a>";
   };
   $scope.init()
 };
