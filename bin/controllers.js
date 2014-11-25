@@ -6,7 +6,6 @@ exports.launchController = function($scope) {
     'host' : window.location.protocol + "//" + window.location.host + '/',
     'text' : "LAUNCH ON",
     'style': 'launch',
-    'image': "button.svg",
     'name' : "launch",
     'metrics'    : false,
     'counter'    : 0,
@@ -51,9 +50,15 @@ exports.launchController = function($scope) {
     var carts = '?';
     var cart_params = cartridges.replace(/ */g,'').split(',');
     cart_params.forEach(function(cart){
-      carts += 'cartridges[]='+cart+'&';
+      carts += '&cartridges[]='+cart;
     });
-    url = launch_host+launch_path+carts+"initial_git_url="+initial_git_url+"&name="+name;
+    url = launch_host+launch_path+'?'+carts.slice(1);
+    if(initial_git_url !== ""){
+      url += "&initial_git_url="+initial_git_url;
+    }
+    if(name !== ""){
+      url += "&name="+name;
+    }
     if(initial_git_branch !== "master"){
       url+="&initial_git_branch="+initial_git_branch
     }
@@ -67,7 +72,7 @@ exports.launchController = function($scope) {
       $scope.launcher.launch_host || $scope.defaults.launch_host,
       $scope.launcher.launch_path || $scope.defaults.launch_path,
       $scope.launcher.cartridges || $scope.defaults.cartridges,
-      $scope.launcher.initial_git_url || $scope.defaults.initial_git_url,
+      $scope.launcher.initial_git_url,
       $scope.launcher.initial_git_branch || $scope.defaults.initial_git_branch,
       $scope.launcher.name || $scope.defaults.name,
       $scope.launcher.metrics,
