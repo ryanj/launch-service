@@ -2,7 +2,7 @@
 
 Custom launch buttons, with opt-in usage tracking:
 
-[![Launch it on OpenShift](https://launch-shifter.rhcloud.com/button/LAUNCH%20ON.svg)](https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=nodejs-0.10&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Flaunch-service.git)
+[![Launch it on OpenShift](https://launch-shifter.rhcloud.com/button/LAUNCH%20ON.svg)](https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=nodejs-0.10&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Flaunch-service.git) [![RUN ME ON OpenShift](https://launch-shifter.rhcloud.com/launch/light/RUN%20ME%20ON.svg)](https://openshift.redhat.com/app/console/application_type/custom?cartridges[]=nodejs-0.10&initial_git_url=https://github.com/ryanj/launch-service.git&name=launch)
 
 Create your own launchers here: [launch-shifter.rhcloud.com](https://launch-shifter.rhcloud.com)
 

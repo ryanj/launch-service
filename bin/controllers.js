@@ -5,6 +5,7 @@ exports.launchController = function($scope) {
   $scope.defaults = {
     'host' : window.location.protocol + "//" + window.location.host + '/',
     'text' : "LAUNCH ON",
+    'style': 'launch',
     'image': "button.svg",
     'name' : "launch",
     'metrics'    : false,
@@ -17,7 +18,7 @@ exports.launchController = function($scope) {
   };
   $scope.init = function(){
     var carts = [];
-    var qs_whitelist = ['text','name','initial_git_url','initial_git_branch','launch_host','launch_path','cartridges','metrics'];
+    var qs_whitelist = ['text','name','initial_git_url','initial_git_branch','launch_host','launch_path','cartridges','metrics','style'];
     // Use available querystring values to set internal defaults
     var qs = window.location.search.slice(1).split("&");
     qs.forEach(function(param){
@@ -80,7 +81,7 @@ exports.launchController = function($scope) {
     return $scope.getText() + " OpenShift";
   }
   $scope.getImage = function(){
-    return $scope.defaults.host + 'button/'+ $scope.getText() +'.svg'
+    return $scope.defaults.host + $scope.launcher.style + '/'+ $scope.getText() +'.svg'
   }
   $scope.getMarkdown = function(){
     return "[!["+$scope.getAltText()+"]("+$scope.getImage()+")]("+$scope.getLaunchUrl()+")";

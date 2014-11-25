@@ -33,10 +33,10 @@
         <label class='control-label' for='cartridges'>Cartridge Runtimes:</label><br/>
         <input class="form-control" name='cartridges' id='cartridges' style='width:90%;' data-ng-model='launcher.cartridges' type='text' placeholder={{defaults.cartridges}} />
       </div>
-      <div style='display:none;' class="form-group">
-        <br />
-        <label class='control-label' for='launchurlinput'>Launch URL:</label><br/>
-        <div class="form-control" style='width:90%;border:1px solid #CCC;background:white;overflow:hidden;' data-ng-bind="getLaunchUrl()" type='text' ></div>
+      <div class='form-group metrics_controls' data-ng-show="launcher.metrics_controls">
+        <br/>
+        <input data-ng-model='launcher.metrics' id='metricscheckboxinput' type='checkbox' required />
+        <label for='metricscheckboxinput'>Enable metrics collection</label>
       </div>
       <div data-ng-show="launcher.metrics"><br/>Launch Count: {{launcher.counter}}</div>
     </form>
@@ -45,13 +45,16 @@
     <h2>Configure</h2>
     <form name='configForm' class='form-horizontal' novalidate>
       <div class="form-group">
-        <label for='buttontextinput'>Button Text:</label><br/>
-        <input name='text' id='buttontextinput' style='width:60%;' data-ng-model='launcher.text' type='text' placeholder={{defaults.text}} required /><span> <b>OPEN</b>SHIFT</span>
+        <label for='typeinput'>Launcher Style:</label><br/>
+        <select data-ng-model="launcher.style" name='style'>
+          <option value='launch'>OpenShift Button (dark)</option>
+          <option value='launch/light'>OpenShift Button (light)</option>
+        </select>
       </div>
-      <div class='form-group metrics_controls' data-ng-show="launcher.metrics_controls">
+      <div class="form-group">
         <br/>
-        <input data-ng-model='launcher.metrics' id='metricscheckboxinput' type='checkbox' required />
-        <label for='metricscheckboxinput'>Enable metrics collection</label>
+        <label for='buttontextinput'>Button Text:</label><br/>
+        <input name='text' id='buttontextinput' style='width:110px;' data-ng-model='launcher.text' type='text' placeholder={{defaults.text}} required /><span> <b>OPEN</b>SHIFT</span>
       </div>
     </form>
 
