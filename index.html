@@ -19,17 +19,27 @@
   <div class='launchInputs col-xs-12 col-sm-6 col-md-6'>
     <h2>Create a Launcher</h2>
     <form name='launchForm' class='form-horizontal' novalidate>
-      <div class="form-group">
+      <div class="form-group" data-ng-hide="launcher.quickstart_id">
         <label class='control-label' for='name'>Service Name:</label><br/>
         <input class="form-control" name='name' id='name' style='width:90%;' data-ng-model='launcher.name' type='text' placeholder={{defaults.name}} />
       </div>
       <br />
-      <div class="form-group">
+      <div class="form-group" data-ng-show="launcher.quickstart_id">
+        <label class='control-label' for='quickstart_id'>Quickstart ID:</label><br/>
+        <input class="form-control" name='quickstart_id' id='quickstart_id' style='width:90%;' data-ng-model='launcher.quickstart_id' type='text' placeholder={{defaults.quickstart_id}} />
+      </div>
+      <div data-ng-show="launcher.quickstart_id">
+        <br />
+        <p>
+        Create launch buttons for quickstarts, or <a href='/'>for custom applications and services</a>
+        </p>
+      </div>
+      <div class="form-group" data-ng-hide="launcher.quickstart_id">
         <label class='control-label' for='initial_git_url'>Source URL:</label><br/>
         <input class="form-control" name='initial_git_url' id='initial_git_url' style='width:90%;' data-ng-model='launcher.initial_git_url' type='text' placeholder={{defaults.initial_git_url}} />
       </div>
       <br />
-      <div class="form-group">
+      <div class="form-group" data-ng-hide="launcher.quickstart_id">
         <label class='control-label' for='cartridges'>Cartridge Runtime(s):</label><br/>
         <input class="form-control" name='cartridges' id='cartridges' style='width:90%;' data-ng-model='launcher.cartridges' type='text' placeholder={{defaults.cartridges}} />
       </div>

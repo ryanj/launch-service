@@ -12,12 +12,13 @@ exports.launchController = function($scope) {
     'launch_host': "https://openshift.redhat.com",
     'launch_path': "/app/console/application_type/custom",
     'cartridges' : "nodejs-0.10",
+    'quickstart_id'     : false,
     'initial_git_branch': "master",
     'initial_git_url'   : "https://github.com/ryanj/launch-service.git"
   };
   $scope.init = function(){
     var carts = [];
-    var qs_whitelist = ['text','name','initial_git_url','initial_git_branch','launch_host','launch_path','cartridges','metrics','style'];
+    var qs_whitelist = ['text','name','initial_git_url','initial_git_branch','launch_host','launch_path','cartridges','metrics','style','quickstart_id'];
     // Use available querystring values to set internal defaults
     var qs = window.location.search.slice(1).split("&");
     qs.forEach(function(param){
@@ -45,22 +46,26 @@ exports.launchController = function($scope) {
     $scope.launcher.metrics = ( $scope.launcher.metrics == "true") ? true : false;
     $scope.launcher.metrics_controls = ( $scope.defaults.metrics == "true") ? true : false;
   };
-  $scope.createLaunchUrl = function(launch_host, launch_path, cartridges, initial_git_url, initial_git_branch, name, metrics, metrics_url){
-    var url = '';
-    var carts = '?';
-    var cart_params = cartridges.replace(/ */g,'').split(',');
-    cart_params.forEach(function(cart){
-      carts += '&cartridges[]='+cart;
-    });
-    url = launch_host+launch_path+'?'+carts.slice(1);
-    if(initial_git_url !== ""){
-      url += "&initial_git_url="+initial_git_url;
+  $scope.createLaunchUrl = function(launch_host, launch_path, quickstart_id, cartridges, initial_git_url, initial_git_branch, name, metrics, metrics_url){
+    var url = launch_host+launch_path
+    if(quickstart_id){
+      url = "https://hub.openshift.com/quickstarts/deploy/" + quickstart_id
+    }else{
+      var carts = '?';
+      var cart_params = cartridges.replace(/ */g,'').split(',');
+      cart_params.forEach(function(cart){
+        carts += '&cartridges[]='+cart;
+      });
+      url += '?'+carts.slice(1);
+      if(initial_git_url !== ""){
+        url += "&initial_git_url="+initial_git_url;
+      }
+      if(initial_git_branch !== "master"){
+        url+="&initial_git_branch="+initial_git_branch
+      }
     }
     if(name !== ""){
       url += "&name="+name;
-    }
-    if(initial_git_branch !== "master"){
-      url+="&initial_git_branch="+initial_git_branch
     }
     if(metrics){
       return metrics_url+'r?url='+encodeURIComponent(url);
@@ -71,6 +76,7 @@ exports.launchController = function($scope) {
     return $scope.createLaunchUrl(
       $scope.launcher.launch_host || $scope.defaults.launch_host,
       $scope.launcher.launch_path || $scope.defaults.launch_path,
+      $scope.launcher.quickstart_id || $scope.defaults.quickstart_id,
       $scope.launcher.cartridges || $scope.defaults.cartridges,
       $scope.launcher.initial_git_url,
       $scope.launcher.initial_git_branch || $scope.defaults.initial_git_branch,
