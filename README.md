@@ -1,5 +1,7 @@
 # Launch-Service [![Build Status](https://api.travis-ci.org/ryanj/launch-service.svg)](https://travis-ci.org/ryanj/launch-service) [![Dependency Check](http://img.shields.io/david/ryanj/launch-service.svg)](https://david-dm.org/ryanj/launch-service)
 
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ryanj/launch-service?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Custom launch buttons, with opt-in usage tracking:
 
 [![Launch it on OpenShift](https://launch-shifter.rhcloud.com/button/LAUNCH%20ON.svg)](https://launch-shifter.rhcloud.com/r?url=https%3A%2F%2Fopenshift.redhat.com%2Fapp%2Fconsole%2Fapplication_type%2Fcustom%3Fcartridges%5B%5D%3Dnodejs-0.10%26initial_git_url%3Dhttps%3A%2F%2Fgithub.com%2Fryanj%2Flaunch-service.git%26name%3Dlaunch) &nbsp; [![RUN ME ON OpenShift](https://launch-shifter.rhcloud.com/launch/light/RUN%20ME%20ON.svg)](https://launch-shifter.rhcloud.com/r?url=https%3A%2F%2Fopenshift.redhat.com%2Fapp%2Fconsole%2Fapplication_type%2Fcustom%3Fcartridges%5B%5D%3Dnodejs-0.10%26initial_git_url%3Dhttps%3A%2F%2Fgithub.com%2Fryanj%2Flaunch-service.git%26name%3Dlaunch)
